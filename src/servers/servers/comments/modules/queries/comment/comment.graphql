@@ -1,0 +1,11 @@
+type Comment {
+  postId: ID!
+  id: ID!
+  name: String!
+  email: String!
+  body: String!
+}
+
+extend type Query {
+  comment(id: ID!): Comment!
+}

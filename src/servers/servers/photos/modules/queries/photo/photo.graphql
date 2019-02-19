@@ -1,0 +1,11 @@
+type Photo {
+  albumId: ID!
+  id: ID!
+  title: String!
+  url: String!
+  thumbnailUrl: String!
+}
+
+extend type Query {
+  photo(id: ID!): Photo!
+}

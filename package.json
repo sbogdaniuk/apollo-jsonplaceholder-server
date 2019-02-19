@@ -1,0 +1,44 @@
+{
+  "name": "apollo-jsonplaceholder-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/servers/server.js",
+  "scripts": {
+    "run:api-gw": "nodemon --exec babel-node src/api-gw/server.js",
+    "run:server": "nodemon --exec babel-node src/servers/server.js",
+    "start:api-gw": "NODE_ENV=production npm run run:api-gw",
+    "start": "NODE_ENV=production npm run run:server",
+    "dev:api-gw": "NODE_ENV=development npm run run:api-gw -- --watch ./src/api-gw",
+    "dev": "NODE_ENV=development npm run run:server -- --watch ./src/servers",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sergei Bogdaniuk",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.2.2",
+    "apollo-errors": "^1.9.0",
+    "apollo-link-http": "^1.5.11",
+    "apollo-server-express": "^2.3.3",
+    "dataloader": "^1.4.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "glob": "^7.1.3",
+    "graphql": "^0.13.2",
+    "graphql-middleware": "^3.0.2",
+    "graphql-resolvers": "^0.3.2",
+    "graphql-shield": "^5.1.3",
+    "graphql-tools": "^4.0.4",
+    "json-server": "^0.14.2",
+    "lodash": "^4.17.11",
+    "merge-graphql-schemas": "^1.5.8",
+    "node-fetch": "^2.3.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "nodemon": "^1.18.9"
+  }
+}

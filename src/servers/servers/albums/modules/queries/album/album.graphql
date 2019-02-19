@@ -1,0 +1,9 @@
+type Album {
+  userId: ID!
+  id: ID!
+  title: String!
+}
+
+extend type Query {
+  album(id: ID!): Album!
+}

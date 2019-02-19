@@ -1,0 +1,7 @@
+type Query {
+  _empty: String @deprecated(reason: "Dummy field")
+}
+
+type Mutation {
+  _empty: String @deprecated(reason: "Dummy field")
+}
