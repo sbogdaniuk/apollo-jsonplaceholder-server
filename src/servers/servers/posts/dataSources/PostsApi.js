@@ -7,16 +7,20 @@ export class PostsApi extends RESTDataSource {
     this.baseURL = process.env.REST_API
 
     this.idsLoader = new DataLoader(async (ids) => {
-      const list = await this.getAll({ id: ids })
+      const key = 'id'
+      const idsQuery = ids.map(id => `${key}=${id}`).join('&')
+      const list = await this.getAll(idsQuery)
       return ids.map(id =>
-        list.find((d) => Number(d.id) === Number(id)),
+        list.find((d) => Number(d[key]) === Number(id)),
       )
     })
 
     this.userIdsLoader = new DataLoader(async (ids) => {
-      const list = await this.getAll({ userId: ids })
+      const key = 'userId'
+      const idsQuery = ids.map(id => `${key}=${id}`).join('&')
+      const list = await this.getAll(idsQuery)
       return ids.map(id =>
-        list.filter((d) => Number(d.userId) === Number(id)),
+        list.filter((d) => Number(d[key]) === Number(id)),
       )
     })
   }

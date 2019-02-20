@@ -33,6 +33,7 @@
     "lodash": "^4.17.11",
     "merge-graphql-schemas": "^1.5.8",
     "node-fetch": "^2.3.0",
+    "ramda": "^0.26.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
