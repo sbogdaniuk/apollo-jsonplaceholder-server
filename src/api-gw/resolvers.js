@@ -1,7 +1,7 @@
 export const resolvers = schemas => ({
   Album: {
     user: {
-      fragment: `fragment FAlbum on Album { userId }`,
+      fragment: `... on Album { userId }`,
       resolve ({ userId: id }, args, context, info) {
         return info.mergeInfo.delegateToSchema({
           schema: schemas.users,
@@ -16,7 +16,7 @@ export const resolvers = schemas => ({
   },
   Photo: {
     album: {
-      fragment: `fragment FPhoto on Photo { albumId }`,
+      fragment: `... on Photo { albumId }`,
       resolve ({ albumId: id }, args, context, info) {
         return info.mergeInfo.delegateToSchema({
           schema: schemas.albums,
@@ -29,9 +29,9 @@ export const resolvers = schemas => ({
       },
     },
   },
-  Post: {
+  Post_Post: {
     user: {
-      fragment: `fragment FPost on Post { userId }`,
+      fragment: `... on Post { userId }`,
       resolve ({ userId: id }, args, context, info) {
         return info.mergeInfo.delegateToSchema({
           schema: schemas.users,
@@ -46,7 +46,7 @@ export const resolvers = schemas => ({
   },
   Comment: {
     post: {
-      fragment: `fragment FComment on Comment { postId }`,
+      fragment: `... on Comment { postId }`,
       resolve ({ postId: id }, args, context, info) {
         return info.mergeInfo.delegateToSchema({
           schema: schemas.posts,
@@ -61,7 +61,7 @@ export const resolvers = schemas => ({
   },
   User: {
     posts: {
-      fragment: `fragment FUser on User { id }`,
+      fragment: `... on User { id }`,
       resolve ({ id }, args, context, info) {
         return info.mergeInfo.delegateToSchema({
           schema: schemas.posts,

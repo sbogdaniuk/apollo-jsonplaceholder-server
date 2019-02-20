@@ -7,15 +7,15 @@ export const typeDefs = `
     album: Album!
   }
   
-  extend type Post {
+  extend type Post_Post {
     user: User!
   }
   
   extend type Comment {
-    post: Post!
+    post: Post_Post!
   }
   
   extend type User {
-    posts: [Post!]!
+    posts: [Post_Post!]!
   }
 `
