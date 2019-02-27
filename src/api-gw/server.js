@@ -47,7 +47,7 @@ const endpoints = names.map(name => `http://localhost:4000/${name.toLowerCase()}
     server.applyMiddleware({ app, path: '/' })
 
     app.listen(port, () => {
-      console.log(`🚀 ready at http://localhost:${port}${server.graphqlPath}`)
+      console.log(`🚀 API-GW ready at http://localhost:${port}${server.graphqlPath}`)
     })
   } catch (error) {
     console.log('ERROR: Failed to grab introspection queries', error)
