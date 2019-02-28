@@ -14,6 +14,15 @@ export class CommentsApi extends RESTDataSource {
         list.find((d) => Number(d[key]) === Number(id)),
       )
     })
+
+    this.postIdsLoader = new DataLoader(async (ids) => {
+      const key = 'postId'
+      const idsQuery = ids.map(id => `${key}=${id}`).join('&')
+      const list = await this.getAll(idsQuery)
+      return ids.map(id =>
+        list.filter((d) => Number(d[key]) === Number(id)),
+      )
+    })
   }
 
   async getAll (params = {}) {
@@ -22,5 +31,9 @@ export class CommentsApi extends RESTDataSource {
 
   async getById (id) {
     return this.byIdsLoader.load(id)
+  }
+
+  async getByPostId (id) {
+    return this.postIdsLoader.load(id)
   }
 }

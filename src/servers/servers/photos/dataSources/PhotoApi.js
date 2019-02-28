@@ -14,13 +14,26 @@ export class PhotoApi extends RESTDataSource {
         list.find((d) => Number(d[key]) === Number(id)),
       )
     })
+
+    this.albumIdsLoader = new DataLoader(async (ids) => {
+      const key = 'albumId'
+      const idsQuery = ids.map(id => `${key}=${id}`).join('&')
+      const list = await this.getAll(idsQuery)
+      return ids.map(id =>
+        list.filter((d) => Number(d[key]) === Number(id)),
+      )
+    })
   }
 
   async getAll (params = {}) {
-    return this.get(' photos', params)
+    return this.get('photos', params)
   }
 
   async getById (id) {
     return this.byIdsLoader.load(id)
+  }
+
+  async getByAlbumId (id) {
+    return this.albumIdsLoader.load(id)
   }
 }

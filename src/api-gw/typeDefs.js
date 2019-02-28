@@ -1,6 +1,7 @@
 export const typeDefs = `
   extend type Album {
     user: User!
+    photos: [Photo!]!
   }
   
   extend type Photo {
@@ -9,6 +10,7 @@ export const typeDefs = `
   
   extend type Post {
     user: User!
+    comments: [Comment!]!
   }
   
   extend type Comment {
@@ -17,9 +19,6 @@ export const typeDefs = `
   
   extend type User {
     posts: [Post!]!
-  }
-  
-  extend type Query {
-    userDL(id: ID!): User!
+    albums: [Album!]!
   }
 `

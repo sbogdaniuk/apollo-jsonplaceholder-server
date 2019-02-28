@@ -1,0 +1,3 @@
+extend type Query {
+  albumsByUserId(id: ID!): [Album!]!
+}

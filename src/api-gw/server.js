@@ -5,7 +5,6 @@ import { mergeSchemas } from 'graphql-tools'
 import { getIntrospectSchema } from './introspection'
 import { resolvers } from './resolvers'
 import { typeDefs } from './typeDefs'
-// import { getPostsSchema } from './schemas/posts'
 
 const port = process.env.PORT || 3000
 const app = express()
@@ -25,13 +24,10 @@ const endpoints = names.map(name => `http://localhost:4000/${name.toLowerCase()}
     //promise.all to grab all remote schemas at the same time, we do not care what order they come back but rather just when they finish
     const allSchemas = await Promise.all([
       ...endpoints.map(ep => getIntrospectSchema(ep)),
-      // getPostsSchema(),
     ])
     const schemas = names.reduce((acc, name, i) => ({
       ...acc, [name]: allSchemas[i],
-    }), {
-      // posts: allSchemas[allSchemas.length - 1]
-    })
+    }), {})
 
     const server = new ApolloServer({
       schema: mergeSchemas({
@@ -47,7 +43,7 @@ const endpoints = names.map(name => `http://localhost:4000/${name.toLowerCase()}
     server.applyMiddleware({ app, path: '/' })
 
     app.listen(port, () => {
-      console.log(`🚀 ready at http://localhost:${port}${server.graphqlPath}`)
+      console.log(`🚀 API gateway ready at http://localhost:${port}${server.graphqlPath}`)
     })
   } catch (error) {
     console.log('ERROR: Failed to grab introspection queries', error)

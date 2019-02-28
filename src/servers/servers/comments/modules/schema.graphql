@@ -5,3 +5,11 @@ type Query {
 type Mutation {
   _empty: String @deprecated(reason: "Dummy field")
 }
+
+type Comment {
+  postId: ID!
+  id: ID!
+  name: String!
+  email: String!
+  body: String!
+}
